@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700&display=swap');
+
+:root {
+  --color-dark: #262626;
+  --color-light:#F2F2F2;
+  --color-yellow:#F2E96B;
+  --color-orange:#F2BA52;
+}
+
+::-webkit-scrollbar{ 
+    width:0.5rem; 
+}
+
+::-webkit-scrollbar-track {
+  background: #313E40;
+  border-radius: 5px; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: #8FA1A6; 
+    height:1rem;
+    width:0.5rem;
+    border-radius: 5px; 
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#root{
+    height:100vh;
+    width: 100vw;
+    background: var(--color-dark);
+}
+

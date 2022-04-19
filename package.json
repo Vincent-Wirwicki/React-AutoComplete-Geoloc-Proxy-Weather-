@@ -1,0 +1,20 @@
+{
+  "name": "weather-app-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apicache": "^1.6.3",
+    "axios": "^0.25.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "express-rate-limit": "^6.2.0"
+  }
+}

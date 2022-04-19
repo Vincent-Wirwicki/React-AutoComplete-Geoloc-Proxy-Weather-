@@ -1,0 +1,33 @@
+.daily{
+    width:100%;
+    height:100%;
+    display: flex;
+    justify-content: center;
+}
+
+.daily__wrap__text{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    border-right:solid 1px var(--color-light);
+    padding-right: 0.5rem;
+
+}
+
+.daily__temp__text{
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    font-weight: 300; 
+}
+
+.daily__desc__text{
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    font-weight: 200;
+}
+
+.daily__date__text{
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    font-weight: 500;  
+}

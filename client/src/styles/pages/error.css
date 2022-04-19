@@ -1,0 +1,13 @@
+.error{
+    position: relative;
+    left:20vw;
+    top:15vh;
+    height: 80vh;
+    width:60vw;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    overflow: hidden;
+    background: var(--color-dark);
+    color:var(--color-light)
+}
