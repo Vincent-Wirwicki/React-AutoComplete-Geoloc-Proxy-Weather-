@@ -8,7 +8,8 @@ It features :
   - Proxy server to hide api key
 
 
-![image](https://user-images.githubusercontent.com/98763680/154074398-62b5a77a-a8bd-490b-a713-a0111cbf5c2f.png)
+![Plan de travail 1](https://user-images.githubusercontent.com/98763680/164020986-8386b77e-466a-471a-a2c6-518f0bb81741.png)
+
 
 [Demo](https://opn-weather.herokuapp.com/)
 
@@ -37,21 +38,9 @@ Frontend :
     -  On click, you add the city to the search bar, you need to click 'go' button to get data  
     -  This is because I wanted to limit API call's if the user miss click
   - Some helper function to convert unix time, kelvin temperature etc
-  - Display weather data (current, next 12 hours, 7 days)
- 
+  - Display weather data (current, next 14 hours, 7 days)
 
 
-## Components
-/app
-  - Header
-    - AutoComplete
-    - AutoCompleteSuggestions
-  - Weather Data
-    - DisplayWeather
-    - DisplayHourly
-    - DisplayWeekly
-  - Helpers
  
- ## what can be added ?
- Dynamic background based on current weather
- Improve
+ 
+
