@@ -18,59 +18,53 @@ const app = express();
 app.use(cors())
 
 const limiter = rateLimit({
-    windowMs: 10 * 60 * 1000, // 10 Mins
-    max: 20,
-  })
+  windowMs: 10 * 60 * 1000, // 10 Mins
+  max: 100,
+});
 
-app.use(limiter)
-app.set('trust proxy', 1)
+app.use(limiter);
+app.set("trust proxy", 1);
 
-app.get('/api/weather', cache('1 minutes'), (req,res) => {
-    
-    const {lon, lat} = req.query
-    const qLat = lat
-    const qLon = lon
-
-    const options = {
-        method: 'GET',
-        url:"https://api.openweathermap.org/data/2.5/onecall",
-        params: {lat: qLat, lon: qLon, [API_KEY_NAME]:API_KEY_VALUE },
-    }
-    axios.request(options)
-     .then(response=> res.json(response.data))
-     .catch(err => console.log(err))
-})
-
-app.get('/api/direct', cache('1 minutes'), (req,res) => {
-    
-    const city = req.query.q
-    
-    const options = {
-        method: 'GET',
-        url:"https://api.openweathermap.org/geo/1.0/direct",
-        params: {q: city, [API_KEY_NAME]:API_KEY_VALUE },
-    }
-    axios.request(options)
-    .then(response=> res.json(response.data))
-    .catch(err => console.log(err))
-})
-
-app.get('/api/reverse', cache('1 minutes'), (req,res) => {
-    
-    const {lat, lon} = req.query
-    const qLat = lat
-    const qLon = lon
-    
-    const options = {
-        method: 'GET',
-        url:"https://api.openweathermap.org/geo/1.0/reverse",
-        params: {lat: qLat, lon: qLon, [API_KEY_NAME]:API_KEY_VALUE },
-    }
-
-    axios.request(options)
+app.get("/api/weather", cache("1 minutes"), (req, res) => {
+  const { lat, lon } = req.query;
+  const options = {
+    method: "GET",
+    url: "https://api.openweathermap.org/data/2.5/onecall",
+    params: { lat: lat, lon: lon, [API_KEY_NAME]: API_KEY_VALUE },
+  };
+  axios
+    .request(options)
     .then(response => res.json(response.data))
-    .catch(err => console.log(err))
-})
+    .catch(err => console.log(err));
+});
+
+app.get("/api/direct", cache("1 minutes"), (req, res) => {
+  const city = req.query.q;
+  const options = {
+    method: "GET",
+    url: "https://api.openweathermap.org/geo/1.0/direct",
+    params: { q: city, [API_KEY_NAME]: API_KEY_VALUE },
+  };
+  axios
+    .request(options)
+    .then(response => res.json(response.data))
+    .catch(err => console.log(err));
+});
+
+app.get("/api/reverse", cache("1 minutes"), (req, res) => {
+  const { lat, lon } = req.query;
+
+  const options = {
+    method: "GET",
+    url: "https://api.openweathermap.org/geo/1.0/reverse",
+    params: { lat: lat, lon: lon, [API_KEY_NAME]: API_KEY_VALUE },
+  };
+
+  axios
+    .request(options)
+    .then(response => res.json(response.data))
+    .catch(err => console.log(err));
+});
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("client"));

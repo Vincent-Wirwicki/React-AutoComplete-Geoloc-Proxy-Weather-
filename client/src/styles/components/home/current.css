@@ -70,7 +70,7 @@
 }
 
 .current__inline__text{
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     font-weight: 400;
     letter-spacing: 1px;
 }
@@ -86,9 +86,14 @@
 @media only screen 
   and (min-device-width: 320px) 
   and (max-device-width: 480px)
-  and (-webkit-min-device-pixel-ratio: 2) {
+  and (-webkit-min-device-pixel-ratio: 1) {
     .current{
         height:40vh;
+    }
+
+    .current__inline__text{
+        font-size: 0.9rem;
+        font-weight: 400;
     }
 
 }

@@ -4,11 +4,30 @@
     left: 0;
     z-index: 4;
     width: 100vw;
-    height:8vh;
+    height:18vh;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
     padding: 1rem;
     background:var(--color-dark);
     color:var(--color-light)
+}
+
+.header__city__not__found{
+    color:var(--color-alert);
+    margin:1rem  
+}
+
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 1) {
+    .header{
+    padding: 0.5rem;
+    height:18vh;
+    }
+    .header__city__not__found{
+    margin:0 
+    }
 }

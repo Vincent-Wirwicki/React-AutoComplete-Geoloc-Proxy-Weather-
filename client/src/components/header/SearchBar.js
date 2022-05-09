@@ -1,14 +1,7 @@
 import { useState } from "react";
 import "../../styles/components/header/search-bar.css";
 
-const SearchBar = ({
-  frenchCity,
-  clearSearch,
-  getGeoCode,
-  queryInput,
-  searchCity,
-  selectInList,
-}) => {
+const SearchBar = ({ frenchCity, setSearch, search, setQueryCity }) => {
   const [suggestions, setSuggestions] = useState([]);
   const [isFocus, setIsFocus] = useState(false);
 
@@ -20,18 +13,13 @@ const SearchBar = ({
     input.length > 3 && results.length > 0 && setSuggestions(results);
   };
 
-  const selectSuggestion = e => {
-    selectInList(e);
-    getGeoCode();
-  };
-
   return (
     <div className="search__wrap">
       <div className="search__bar">
         <button
           className="search__bar__clear"
           onClick={() => {
-            clearSearch();
+            setSearch("");
             setSuggestions([]);
           }}
         >
@@ -41,18 +29,18 @@ const SearchBar = ({
           className="search__bar__input"
           type="text"
           placeholder="search"
-          value={queryInput || ""}
+          value={search || ""}
           onFocus={() => setIsFocus(true)}
           onBlur={() => setIsFocus(false)}
           onChange={e => {
             filterSuggestions(e);
-            searchCity(e);
+            setSearch(e.target.value);
           }}
         />
         <button
           className="search__bar__find"
           onClick={() => {
-            getGeoCode();
+            setQueryCity(search);
             setSuggestions([]);
           }}
         >
@@ -61,12 +49,15 @@ const SearchBar = ({
       </div>
       <div className={isFocus ? "search__bar__suggestion__visible" : ""}>
         {isFocus &&
-          suggestions.length >= 1 &&
+          suggestions.length > 0 &&
           suggestions.map(({ name }, index) => (
             <p
               key={index}
               className={isFocus ? "search__bar__suggestion__item" : ""}
-              onMouseDown={e => selectSuggestion(e)}
+              onMouseDown={e => {
+                setSearch(e.target.txtContent);
+                setQueryCity(search);
+              }}
             >
               {name}
             </p>

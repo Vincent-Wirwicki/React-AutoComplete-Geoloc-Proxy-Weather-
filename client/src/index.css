@@ -4,8 +4,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700&display=swap');
 
 :root {
+  --color-alert:#F2858E;
   --color-dark: #262626;
-  --color-light:#F2F2F2;
+  --color-light:#F2DCB3;
   --color-yellow:#F2E96B;
   --color-orange:#F2BA52;
 }
@@ -15,15 +16,20 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #313E40;
+  background: var(--color-light);
   border-radius: 5px; 
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #8FA1A6; 
+    background: #F2BA52; 
     height:1rem;
-    width:0.5rem;
+    width:1rem;
     border-radius: 5px; 
+}
+
+input::placeholder { 
+  color: var(--color-light);
+  opacity: 1;
 }
 
 body {
@@ -40,5 +46,6 @@ body {
     height:100vh;
     width: 100vw;
     background: var(--color-dark);
+    overflow: hidden;
 }
 

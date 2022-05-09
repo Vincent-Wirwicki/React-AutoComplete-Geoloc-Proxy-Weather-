@@ -5,7 +5,18 @@ import Loader from "../components/utils/Loader";
 import "../styles/pages/home.css";
 import { useState } from "react";
 
-const Home = ({ city, geoloc, isLoading, weatherData }) => {
+const Home = ({
+  displayCity,
+  cityNotFound,
+  isLoadingWeather,
+  isLoadingCity,
+  geoloc,
+  userCity,
+  userCityNotFound,
+  setDisplayCity,
+  weatherData,
+  weatherNotFound,
+}) => {
   const { current, daily, hourly } = weatherData;
 
   const titles = ["Current", "Hourly", "Daily"];
@@ -14,11 +25,18 @@ const Home = ({ city, geoloc, isLoading, weatherData }) => {
   const date = new Date();
   const options = { weekday: "long", month: "long", day: "numeric" };
 
+  const refreshUserCity = () =>
+    userCity.length ? setDisplayCity(userCity) : displayCity;
+
   return (
     <section className="home">
       <div className="home__wrap__city__pos">
         <div className="home__wrap__city__date__text">
-          <h1 className="home__city">{!isLoading ? city : "city"}</h1>
+          <h1 className="home__city">
+            {!cityNotFound || !userCityNotFound
+              ? displayCity
+              : "No city to show"}
+          </h1>
           <p className="home__date">
             {date.toLocaleDateString("en-EN", options)}
           </p>
@@ -27,7 +45,10 @@ const Home = ({ city, geoloc, isLoading, weatherData }) => {
           src="./svg/position1.svg"
           alt="position"
           className="home__svg__position"
-          onClick={geoloc}
+          onClick={() => {
+            geoloc();
+            refreshUserCity();
+          }}
         ></img>
       </div>
       <div className="home__wrap__tab__title">
@@ -45,11 +66,19 @@ const Home = ({ city, geoloc, isLoading, weatherData }) => {
           </button>
         ))}
       </div>
-      {!isLoading ? (
+      {weatherNotFound ? (
+        <div>
+          <h3 className="home__no__weather">No weather to show</h3>
+          <h3 className="home__no__weather">
+            Make a research or click position icon
+          </h3>
+          <Loader />
+        </div>
+      ) : !isLoadingWeather ? (
         <>
           {activeTab === "Current" && (
             <article className="home__tab__content__current">
-              <Current current={current} isLoading={isLoading} />
+              <Current current={current} />
             </article>
           )}
           {activeTab === "Daily" && (

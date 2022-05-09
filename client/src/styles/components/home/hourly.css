@@ -34,10 +34,10 @@
 
 @media only screen 
   and (min-device-width: 320px) 
-  and (max-device-width: 480px)
-  and (-webkit-min-device-pixel-ratio: 2) {
+  and (max-device-width: 785px)
+  and (-webkit-min-device-pixel-ratio: 1) {
     .hourly__wrap__info{
-        width: 30%;
+        width: 20%;
     }
 
     .hourly__img{

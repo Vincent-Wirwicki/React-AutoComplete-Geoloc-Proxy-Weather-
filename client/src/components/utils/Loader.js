@@ -11,7 +11,7 @@ const Loader = () => {
           <circle className="loader__svg__circle" r="2"></circle>
         </svg>
       </div>
-      <h1>Waiting for data</h1>
+      <h3 className="loader__txt">Waiting for data</h3>
     </div>
   );
 };

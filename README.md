@@ -40,6 +40,11 @@ Frontend :
   - Some helper function to convert unix time, kelvin temperature etc
   - Display weather data (current, next 14 hours, 7 days)
 
+## Update
+
+05.07.2022 
+  - added custom hooks for some app logic like fetching data or geoloc. 
+  - Fixe some ui issues.
 
  
  

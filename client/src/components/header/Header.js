@@ -2,24 +2,26 @@ import SearchBar from "./SearchBar";
 import "../../styles/components/header/header.css";
 
 const Header = ({
-  clearSearch,
+  cityNotFound,
   frenchCity,
   getGeoCode,
-  queryInput,
-  searchCity,
-  selectInList,
+  setSearch,
+  search,
+  setQueryCity,
 }) => {
   return (
-    <div className="header">
+    <section className="header">
+      {cityNotFound && (
+        <p className="header__city__not__found">{search} not found</p>
+      )}
       <SearchBar
-        clearSearch={clearSearch}
         frenchCity={frenchCity}
         getGeoCode={getGeoCode}
-        queryInput={queryInput}
-        searchCity={searchCity}
-        selectInList={selectInList}
+        setSearch={setSearch}
+        search={search}
+        setQueryCity={setQueryCity}
       />
-    </div>
+    </section>
   );
 };
 

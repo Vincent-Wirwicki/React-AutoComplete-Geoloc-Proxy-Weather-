@@ -1,5 +1,5 @@
 .loader{
-    height: 100%;
+    height: 60%;
     width:100%;
     display: flex;
     flex-direction: column;
@@ -11,8 +11,12 @@
     color:var(--color-light)
 }
 
+.loader__txt {
+  letter-spacing: 5px;
+}
+
 .loader__svg__circle {
-  fill: #16f2f2;
+  fill: var(--color-orange);
   offset-path: path("M 50,50 m -20, 0 a 20,20 0 1,0 40,0 a 20,20 0 1,0 -40,0");
   offset-distance: 0%;
   animation: circularLoader 1.5s infinite cubic-bezier(0.12, 0, 0.39, 0);
