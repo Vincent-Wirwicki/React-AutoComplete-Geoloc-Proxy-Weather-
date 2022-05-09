@@ -8,7 +8,8 @@ It features :
   - Proxy server to hide api key
 
 
-![Plan de travail 1](https://user-images.githubusercontent.com/98763680/164020986-8386b77e-466a-471a-a2c6-518f0bb81741.png)
+
+![open-weather](https://user-images.githubusercontent.com/98763680/167411474-5bf91635-c4c7-477c-9252-592e44578026.png)
 
 
 [Demo](https://opn-weather.herokuapp.com/)
