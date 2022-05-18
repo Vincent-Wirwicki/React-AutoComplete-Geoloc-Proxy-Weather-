@@ -36,8 +36,7 @@ Frontend :
     - Search a specific city in search bar
   - Auto complete :
     -  Works with french city
-    -  On click, you add the city to the search bar, you need to click 'go' button to get data  
-    -  This is because I wanted to limit API call's if the user miss click
+    -  If you click on suggestion make a first query to get geocode then query weather data  
   - Some helper function to convert unix time, kelvin temperature etc
   - Display weather data (current, next 14 hours, 7 days)
 
