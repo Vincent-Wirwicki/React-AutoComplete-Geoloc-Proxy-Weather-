@@ -10,59 +10,57 @@ import useFetchWeather from "./components/hooks/useFetchWeather";
 
 const App = () => {
   const [displayCity, setDisplayCity] = useState(null);
-  const [queryCity, setQueryCity] = useState();
-  const [queryLat, setQueryLat] = useState(null);
-  const [queryLon, setQueryLon] = useState(null);
+  const [isCity, setIsCity] = useState(false);
+  const [queryCity, setQueryCity] = useState("Lyon");
+  const [queryLat, setQueryLat] = useState("45.7578");
+  const [queryLon, setQueryLon] = useState("4.832");
   const [search, setSearch] = useState(null);
 
-  const frenchCity = City.getCitiesOfCountry(
-    window.navigator.language.substring(3)
-  );
+  const cityList = City.getAllCities();
 
   const [{ userLat, userLon }, geoloc] = useGeoloc(setQueryLat, setQueryLon);
 
-  const { isGeolocLoading, userCity, userCityNotFound } = useFetchReverseGeoloc(
+  const { userCity } = useFetchReverseGeoloc(
     userLat,
     userLon,
-    setDisplayCity
+    setDisplayCity,
+    setIsCity
   );
 
-  const { isLoadingCity, cityNotFound } = useFetchGeocode(
+  useFetchGeocode(
     queryCity,
     setQueryLat,
     setQueryLon,
-    setDisplayCity
+    setDisplayCity,
+    setIsCity
   );
 
   const { isLoadingWeather, weatherNotFound, weatherData } = useFetchWeather(
     queryLat,
     queryLon
   );
-
+  // console.log(weatherData);
   return (
     <>
       <Header
-        cityNotFound={cityNotFound}
-        frenchCity={frenchCity}
+        cityList={cityList}
         setSearch={setSearch}
         search={search}
         setQueryCity={setQueryCity}
       />
       <Home
         displayCity={displayCity}
-        cityNotFound={cityNotFound}
         geoloc={geoloc}
-        isLoadingCity={isLoadingCity}
-        isGeolocLoading={isGeolocLoading}
+        isCity={isCity}
         isLoadingWeather={isLoadingWeather}
         userCity={userCity}
-        userCityNotFound={userCityNotFound}
+        search={search}
         setDisplayCity={setDisplayCity}
         weatherNotFound={weatherNotFound}
         weatherData={weatherData}
       />
     </>
   );
-};
+};;
 
 export default App;

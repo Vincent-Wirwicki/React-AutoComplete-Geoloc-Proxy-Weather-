@@ -16,7 +16,7 @@ const Daily = ({ weekDay }) => {
         <p className="daily__date__text">{unixDateDays(dt)}</p>
       </div>
       <img
-        className=""
+        className="daily__img"
         src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
         alt=""
       />

@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 
-const useFetchReverseGeoloc = (lat, lon, setDisplayCity) => {
+const useFetchReverseGeoloc = (lat, lon, setDisplayCity, setIsCity) => {
   const [isGeolocLoading, setIsGeolocLoading] = useState(false);
   const [userCity, setUserCity] = useState();
-  const [userCityNotFound, setUserCityNotFound] = useState(true);
   const [, setIsGeoloc] = useState(false);
 
   const getGeocode = async (lat, lon) => {
@@ -26,18 +25,18 @@ const useFetchReverseGeoloc = (lat, lon, setDisplayCity) => {
         const { name } = userData[0];
         setDisplayCity(name);
         setUserCity(name);
-        setUserCityNotFound(false);
+        setIsCity(true);
         setIsGeolocLoading(false);
       } catch {
-        setUserCityNotFound(true);
+        setIsCity(false);
         setIsGeolocLoading(false);
       }
     };
     fecthUserCity();
     setIsGeoloc(false);
-  }, [lat, lon, setDisplayCity]);
+  }, [lat, lon, setDisplayCity, setIsCity]);
 
-  return { isGeolocLoading, userCity, userCityNotFound };
+  return { isGeolocLoading, userCity };
 };
 
 export default useFetchReverseGeoloc;

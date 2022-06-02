@@ -1,13 +1,13 @@
 import { useState } from "react";
 import "../../styles/components/header/search-bar.css";
 
-const SearchBar = ({ frenchCity, setSearch, search, setQueryCity }) => {
+const SearchBar = ({ cityList, setSearch, search, setQueryCity }) => {
   const [suggestions, setSuggestions] = useState([]);
   const [isFocus, setIsFocus] = useState(false);
 
   const filterSuggestions = e => {
     const input = e.currentTarget.value;
-    const results = frenchCity.filter(({ name }) =>
+    const results = cityList.filter(({ name }) =>
       name.toLowerCase().startsWith(input.toLowerCase())
     );
     input.length > 3 && results.length > 0 && setSuggestions(results);

@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
-// import useFetchWeather from "./useFetchWeather";
 
-const useFetchGeocode = (city, setQueryLat, setQueryLon, setDisplayCity) => {
-  const [isLoadingCity, setIsLoadingCity] = useState(false);
-  const [cityNotFound, setCityNotFound] = useState(false);
-  // const [cityName, setCityName] = useState(null);
+const useFetchGeocode = (
+  city,
+  setQueryLat,
+  setQueryLon,
+  setDisplayCity,
+  setIsCity
+) => {
+  const [, setIsLoadingCity] = useState(false);
+  const [, setCityNotFound] = useState(false);
 
   const getGeocode = async city => {
     const res = await fetch(`http://localhost:5000/api/direct?q=${city}`);
@@ -25,21 +29,17 @@ const useFetchGeocode = (city, setQueryLat, setQueryLon, setDisplayCity) => {
         setDisplayCity(name);
         setQueryLat(lat);
         setQueryLon(lon);
-        setCityNotFound(false);
+        setIsCity(true);
         setIsLoadingCity(false);
       } catch {
-        setCityNotFound(true);
+        setIsCity(false);
         setIsLoadingCity(false);
       }
     };
     fetchGeoCode();
-  }, [city, setQueryLat, setQueryLon, setDisplayCity]);
+  }, [city, setQueryLat, setQueryLon, setDisplayCity, setIsCity]);
 
-  return {
-    isLoadingCity,
-    cityNotFound,
-    // cityName,
-  };
+  return;
 };
 
 export default useFetchGeocode;

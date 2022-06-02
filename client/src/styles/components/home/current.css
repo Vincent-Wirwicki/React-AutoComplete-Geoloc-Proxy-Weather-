@@ -23,14 +23,13 @@
 }
 
 .current__temp__deg__value{
-    font-size: 4em;
+    font-size: 3rem;
     letter-spacing: 2px;
 }
 
 .current__temp__deg__symbol{
     font-size: 2.8rem;
     margin: 0.2rem;
-
 }
 
 .current__icon{
@@ -40,7 +39,8 @@
 .current__description{
     font-size: 1.5rem;
     letter-spacing: 2px;
-    font-weight: 200;
+    font-weight: 400;
+    text-align: end;
 }
 
 .current__wrap__details{
@@ -52,15 +52,10 @@
 
 .current__wrap__details__category{
     width: 100%;
-    margin-top: 1.5rem;
+    margin-top: 2rem;
 
 }
-.current__details__category__title{
-    font-size: 1.1rem;
-    font-weight: 400;
-    letter-spacing: 2px;
-    text-decoration: overline;
-}
+
 .current__wrap__details__inline{
     display: flex;
     justify-content: space-between;
@@ -84,11 +79,23 @@
 }
 
 @media only screen 
-  and (min-device-width: 320px) 
+  and (min-device-width: 0px) 
   and (max-device-width: 480px)
   and (-webkit-min-device-pixel-ratio: 1) {
-    .current{
+    /* .current{
         height:40vh;
+    } */
+
+    .current__temp__deg__value{
+        font-size: 2.5rem;
+        letter-spacing: 2px;
+    }
+    .current__temp__deg__symbol{
+        font-size:2rem;
+        margin: 0.2rem;
+    }
+    .current__description{
+        font-size:1.1rem;
     }
 
     .current__inline__text{

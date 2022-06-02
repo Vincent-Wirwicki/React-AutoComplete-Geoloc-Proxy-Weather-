@@ -28,23 +28,7 @@ const Current = ({ current }) => {
           alt={icon}
         />
       </div>
-      <div className="current__wrap__desc">
-        {/* <div className="current__wrap__all__sun__icons">
-          <div className="current__wrap__sun__icons">
-            <p>
-              <WiSunrise size={28} className="" />
-            </p>
-            <p className="current__sun__text">{unixTimeComplete(sunrise)}</p>
-          </div>
-          <div className="current__wrap__sun__icons">
-            <p className="">
-              <WiSunset size={28} className="" />
-            </p>
-            <p className="current__sun__text">{unixTimeComplete(sunset)}</p>
-          </div>
-        </div> */}
-      </div>
-
+      <div className="current__wrap__desc"></div>
       <div className="current__wrap__details">
         <div className="current__wrap__details__category">
           <div className="current__wrap__details__inline">

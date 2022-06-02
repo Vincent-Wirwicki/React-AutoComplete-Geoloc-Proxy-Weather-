@@ -1,26 +1,22 @@
 import SearchBar from "./SearchBar";
 import "../../styles/components/header/header.css";
 
-const Header = ({
-  cityNotFound,
-  frenchCity,
-  getGeoCode,
-  setSearch,
-  search,
-  setQueryCity,
-}) => {
+const Header = ({ cityList, getGeoCode, setSearch, search, setQueryCity }) => {
+  const date = new Date();
+  const options = { weekday: "long", month: "long", day: "numeric" };
+
   return (
     <section className="header">
-      {cityNotFound && (
-        <p className="header__city__not__found">{search} not found</p>
-      )}
       <SearchBar
-        frenchCity={frenchCity}
+        cityList={cityList}
         getGeoCode={getGeoCode}
         setSearch={setSearch}
         search={search}
         setQueryCity={setQueryCity}
       />
+      <p className="header__date">
+        {date.toLocaleDateString("en-EN", options)}
+      </p>
     </section>
   );
 };

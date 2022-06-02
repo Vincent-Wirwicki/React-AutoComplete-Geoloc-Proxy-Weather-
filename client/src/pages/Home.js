@@ -7,40 +7,29 @@ import { useState } from "react";
 
 const Home = ({
   displayCity,
-  cityNotFound,
+  isCity,
   isLoadingWeather,
-  isLoadingCity,
   geoloc,
   userCity,
-  userCityNotFound,
+  search,
   setDisplayCity,
   weatherData,
   weatherNotFound,
 }) => {
   const { current, daily, hourly } = weatherData;
 
-  const titles = ["Current", "Hourly", "Daily"];
+  const titles = ["Current", "Hourly", "Week"];
   const [activeTab, setActiveTab] = useState("Current");
 
-  const date = new Date();
-  const options = { weekday: "long", month: "long", day: "numeric" };
-
   const refreshUserCity = () =>
-    userCity.length ? setDisplayCity(userCity) : displayCity;
+    userCity !== undefined || userCity.length > 0
+      ? setDisplayCity(userCity)
+      : displayCity;
 
   return (
     <section className="home">
       <div className="home__wrap__city__pos">
-        <div className="home__wrap__city__date__text">
-          <h1 className="home__city">
-            {!cityNotFound || !userCityNotFound
-              ? displayCity
-              : "No city to show"}
-          </h1>
-          <p className="home__date">
-            {date.toLocaleDateString("en-EN", options)}
-          </p>
-        </div>
+        <h1 className="home__city">{isCity ? displayCity : "No city :("}</h1>
         <img
           src="./svg/position1.svg"
           alt="position"
@@ -69,11 +58,14 @@ const Home = ({
       {weatherNotFound ? (
         <div>
           <h3 className="home__no__weather">No weather to show</h3>
-          <h3 className="home__no__weather">
-            Make a research or click position icon
-          </h3>
+          <h3 className="home__no__weather">Make a research or</h3>
+          <h3 className="home__no__weather">click position icon</h3>
           <Loader />
         </div>
+      ) : !isCity ? (
+        <h3 className="home__no__city">
+          <span className="home__no__city__span">{search}</span> not found
+        </h3>
       ) : !isLoadingWeather ? (
         <>
           {activeTab === "Current" && (
@@ -81,7 +73,7 @@ const Home = ({
               <Current current={current} />
             </article>
           )}
-          {activeTab === "Daily" && (
+          {activeTab === "Week" && (
             <article className="home__tab__content__daily">
               {daily.slice(1).map((day, index) => (
                 <Daily key={index} weekDay={day} />

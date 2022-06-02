@@ -1,40 +1,39 @@
 .search__wrap{
-    position:fixed;
-    right: 2rem;
-    top:2rem;
+    /* position:fixed;
+    left: 25vw;
+    top:4rem; */
     z-index: 2;
-    min-height: fit-content;
-    max-height: 20vh;
-    width:25rem;
+    height: 20vh;
+    width:20rem;
     display: flex;
     flex-direction: column;
 }
 
 .search__bar{
-    min-height:1.5rem;
-    max-height: fit-content;
+    min-height:1.8rem;
     width: 100%;
     border: solid 2px var(--color-light);
-    border-radius: 25px;
+    border-radius: 10px;
     display: grid;
-    grid-template-columns: 8% 75% 17%;
+    grid-template-columns: 8% 75% 15%;
     grid-template-rows: 1fr;
     align-content: center;
     align-self:center;
-    font-size: 1.1rem;
-    text-align: baseline;
-    line-height: 1.2;
+    font-size: 1rem;
+    /* text-align: baseline; */
+    line-height: 1.5;
     overflow: hidden;
 }
 
 .search__bar__clear{
     font-weight: 600;
-    
 }
+
 .search__bar__clear:hover{
     background: var(--color-dark);
     color:var(--color-light);
 }
+
 .search__bar__find{
     letter-spacing: 2px;
     font-weight: 300;
@@ -43,6 +42,7 @@
 .search__bar__input {
     padding-left: 5px;
     height: 100%;
+    color:var(--color-light);
     border-left: 1px solid var(--color-light);
     border-right:1px solid var(--color-light);
     font-weight: 500;
@@ -59,7 +59,6 @@
     border-radius: 5px;
     margin-top: 5px;
     padding: 0.9rem;
-
     background: var(--color-dark);
 }
 
@@ -88,22 +87,55 @@ input:focus{
 button:focus{
     outline: none;
 }
+@media only screen 
+  and (max-device-width: 1150px) 
+  and (min-device-width: 786px) 
+  and (-webkit-min-device-pixel-ratio: 1){
+
+    .search__bar__suggestion__visible{
+        height:60%;
+    }
+
+  }
+
+/* @media only screen 
+  and (max-device-width: 785px) 
+  and (min-device-width: 480px) 
+  and (-webkit-min-device-pixel-ratio: 1){
+    .search__bar__suggestion__visible{
+        height:50%;
+    }
+  } */
 
 @media only screen 
-  and (min-device-width: 320px) 
-  and (max-device-width: 480px)
+  and (min-device-width: 0px) 
+  and (max-device-width: 785px)
   and (-webkit-min-device-pixel-ratio: 1) {
 
-    .search__bar{
-    border-radius: 25px;
-    font-size: 1rem;
+    .search__wrap{
+        position: fixed;
+        top:1rem;
+        left:2rem;
+        width:80vw;
     }
 
-    .search__wrap{
-    right: 2rem;
-    top:2rem;
-    min-height: fit-content;
-    max-height: 20vh;
-    width: 22rem;
+    .search__bar__suggestion__visible{
+        height:40%;
     }
+
+    .search__bar{
+        height: 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .search__bar__suggestion__item{
+        font-size: 0.9rem;
+        letter-spacing: 3px;
+    }
+
+    /* .search__wrap{
+        right: 2rem;
+        top:3rem;
+        width: 20rem;
+    } */
 }
