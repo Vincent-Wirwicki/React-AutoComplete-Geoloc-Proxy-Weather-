@@ -6,14 +6,14 @@ const useFetchWeather = (lat, lon) => {
   const [weatherData, setWeatherData] = useState([]);
 
   const getWeather = async (lat, lon) => {
-    const res = await fetch(
-      `http://localhost:5000/api/weather?lat=${lat}&lon=${lon}`
-    );
-    if (!res.ok) {
-      throw new Error(setWeatherNotFound(true));
-    } else {
-      const data = res.json();
-      return data;
+    if (lat !== null && lon !== null) {
+      const res = await fetch(`/api/weather?lat=${lat}&lon=${lon}`);
+      if (!res.ok) {
+        throw new Error(setWeatherNotFound(true));
+      } else {
+        const data = res.json();
+        return data;
+      }
     }
   };
 
