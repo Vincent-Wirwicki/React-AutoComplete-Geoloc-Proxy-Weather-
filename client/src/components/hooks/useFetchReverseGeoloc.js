@@ -6,14 +6,14 @@ const useFetchReverseGeoloc = (lat, lon, setDisplayCity, setIsCity) => {
   const [, setIsGeoloc] = useState(false);
 
   const getGeocode = async (lat, lon) => {
-    const res = await fetch(
-      `http://localhost:5000/api/reverse?lat=${lat}&lon=${lon}`
-    );
-    if (!res.ok) {
-      throw new Error(setIsGeoloc(false));
-    } else {
-      const data = res.json();
-      return data;
+    if (lat !== null && lon !== null) {
+      const res = await fetch(`/api/reverse?lat=${lat}&lon=${lon}`);
+      if (!res.ok) {
+        throw new Error(setIsGeoloc(false));
+      } else {
+        const data = res.json();
+        return data;
+      }
     }
   };
 
